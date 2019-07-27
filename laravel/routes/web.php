@@ -14,3 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::resource('posts', 'PostController')->only('index', 'show');
+
+Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function (){
+    Route::resource('users', 'UserController');
+    Route::resource('posts', 'PostController')->except('show');
+});
