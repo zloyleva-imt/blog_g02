@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -12,9 +13,14 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request, User $users)
     {
-        //
+//        dd($request->except('page'));
+//        dd($users->getAll($request));
+        return view('admin.users.index', [
+            'users' => $users->getAll($request),
+            'request' => collect($request->except('page'))
+        ]);
     }
 
     /**
