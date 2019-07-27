@@ -39,9 +39,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function contact(){
+        return $this->hasOne(Contact::class);
+    }
+
     public function getAll(Request $request)
     {
-        $query = $this->query();
+        $query = $this->with('contact');
         if($request->has('search')){
             $query->where('name','like',"%{$request->search}%");
         }

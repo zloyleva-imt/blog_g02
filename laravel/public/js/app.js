@@ -1885,6 +1885,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Index",
   props: {
@@ -64921,6 +64923,8 @@ var render = function() {
               _vm._v(" "),
               _c("td", [_vm._v(_vm._s(user.email))]),
               _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(user.contact.phone))]),
+              _vm._v(" "),
               _c("td", [_vm._v(_vm._s(user.role))]),
               _vm._v(" "),
               _c("td", [
@@ -64974,6 +64978,8 @@ var staticRenderFns = [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Name")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Email")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Phone")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Role")]),
         _vm._v(" "),

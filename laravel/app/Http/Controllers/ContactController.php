@@ -1,26 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Contact;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
-class UserController extends Controller
+class ContactController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request, User $users)
+    public function index()
     {
-//        dd($request->except('page'));
-//        dd($users->getAll($request));
-        return view('admin.users.index', [
-            'users' => $users->getAll($request),
-            'request' => collect($request->except('page'))
-        ]);
+        //
     }
 
     /**
@@ -45,12 +39,23 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function show(Contact $contact)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Contact  $contact
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Contact $contact)
     {
         //
     }
@@ -59,10 +64,10 @@ class UserController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Contact $contact)
     {
         //
     }
@@ -70,14 +75,11 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user, Request $request)
+    public function destroy(Contact $contact)
     {
-        return response()->json([
-            'status' => $user->delete(),
-            'users' => $user->getAll($request),
-        ]);
+        //
     }
 }
