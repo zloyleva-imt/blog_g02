@@ -14,12 +14,16 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr v-for="(user,i) in users.data">
+                <tr v-for="(user,i) in data_users.data" :key="i">
                     <th scope="row">{{ i + 1 }}</th>
                     <td>{{ user.name }}</td>
                     <td>{{ user.email }}</td>
                     <td>{{ user.role }}</td>
-                    <td></td>
+                    <td>
+
+                        <button class="btn btn-danger" @click="deleteHandler(user.id)">Delete</button>
+
+                    </td>
                 </tr>
                 </tbody>
             </table>
@@ -48,6 +52,14 @@
                 required: true
             }
         },
+        data(){
+            return {
+                data_users: {}
+            }
+        },
+        created(){
+            this.data_users = this.users
+        },
         methods: {
             linkGen(pageNum) {
                 return pageNum === 1 ?
@@ -66,6 +78,15 @@
                     location.pathname.slice(0,-1)
                     :
                     location.pathname
+            },
+            deleteHandler(id){
+                console.log(id);
+
+                axios.delete(`${location.pathname}/${id}${location.search}`)
+                    .then(res => {
+                        // console.log(res.data.users);
+                        this.data_users = JSON.parse(res.data.users);
+                    })
             }
         }
     }

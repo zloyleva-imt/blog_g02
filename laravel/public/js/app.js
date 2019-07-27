@@ -1881,6 +1881,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Index",
   props: {
@@ -1892,6 +1896,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       type: [Object, Array],
       required: true
     }
+  },
+  data: function data() {
+    return {
+      data_users: {}
+    };
+  },
+  created: function created() {
+    this.data_users = this.users;
   },
   methods: {
     linkGen: function linkGen(pageNum) {
@@ -1907,6 +1919,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     getFirstPageUrl: function getFirstPageUrl() {
       return location.pathname.length > 3 && location.pathname[location.pathname.length - 1] === '/' ? location.pathname.slice(0, -1) : location.pathname;
+    },
+    deleteHandler: function deleteHandler(id) {
+      var _this = this;
+
+      console.log(id);
+      axios["delete"]("".concat(location.pathname, "/").concat(id).concat(location.search)).then(function (res) {
+        // console.log(res.data.users);
+        _this.data_users = JSON.parse(res.data.users);
+      });
     }
   }
 });
@@ -64892,8 +64913,8 @@ var render = function() {
         _vm._v(" "),
         _c(
           "tbody",
-          _vm._l(_vm.users.data, function(user, i) {
-            return _c("tr", [
+          _vm._l(_vm.data_users.data, function(user, i) {
+            return _c("tr", { key: i }, [
               _c("th", { attrs: { scope: "row" } }, [_vm._v(_vm._s(i + 1))]),
               _vm._v(" "),
               _c("td", [_vm._v(_vm._s(user.name))]),
@@ -64902,7 +64923,20 @@ var render = function() {
               _vm._v(" "),
               _c("td", [_vm._v(_vm._s(user.role))]),
               _vm._v(" "),
-              _c("td")
+              _c("td", [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-danger",
+                    on: {
+                      click: function($event) {
+                        return _vm.deleteHandler(user.id)
+                      }
+                    }
+                  },
+                  [_vm._v("Delete")]
+                )
+              ])
             ])
           }),
           0

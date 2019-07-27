@@ -47,4 +47,8 @@ class User extends Authenticatable
         }
         return $query->paginate()->appends($request->query())->toJson();
     }
+
+    public function scopeAdmin($q){
+        return $q->where('role','admin');
+    }
 }
