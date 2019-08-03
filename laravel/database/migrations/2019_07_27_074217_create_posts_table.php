@@ -18,6 +18,7 @@ class CreatePostsTable extends Migration
 
             $table->string('title');
             $table->string('slug');
+            $table->text('short_description');
             $table->text('body');
             $table->unsignedInteger('views')->default(0);
             $table->unsignedInteger('likes')->default(0);

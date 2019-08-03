@@ -27,7 +27,8 @@ class AppServiceProvider extends ServiceProvider
         View::composer('*', function (\Illuminate\View\View $view){
             $view->with([
                 'routes' => [
-                    'posts' => route('posts.index')
+                    'posts' => route('posts.index'),
+                    'postByAuthor' => route('welcome').'/author/'
                 ]
             ]);
         });

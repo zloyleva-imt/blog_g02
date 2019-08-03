@@ -1982,6 +1982,11 @@ __webpack_require__.r(__webpack_exports__);
       type: Object,
       required: true
     }
+  },
+  methods: {
+    shortDescription: function shortDescription(text) {
+      return text + "...";
+    }
   }
 });
 
@@ -65072,20 +65077,30 @@ var render = function() {
             _c("div", { staticClass: "col-md-8" }, [
               _c("div", { staticClass: "card-body" }, [
                 _c("h5", { staticClass: "card-title" }, [
-                  _vm._v(_vm._s(post.title))
+                  _c(
+                    "a",
+                    { attrs: { href: _vm.routes.posts + "/" + post.slug } },
+                    [_vm._v(_vm._s(post.title))]
+                  )
                 ]),
                 _vm._v(" "),
                 _c("p", { staticClass: "card-text" }, [
                   _c("small", { staticClass: "text-muted" }, [
                     _vm._v("author "),
-                    _c("a", { attrs: { href: "" } }, [
-                      _vm._v(_vm._s(post.user.name))
-                    ])
+                    _c(
+                      "a",
+                      {
+                        attrs: {
+                          href: "" + _vm.routes.postByAuthor + post.user.id
+                        }
+                      },
+                      [_vm._v(_vm._s(post.user.name))]
+                    )
                   ])
                 ]),
                 _vm._v(" "),
                 _c("p", { staticClass: "card-text" }, [
-                  _vm._v(_vm._s(post.body))
+                  _vm._v(_vm._s(_vm.shortDescription(post.short_description)))
                 ]),
                 _vm._v(" "),
                 _c("p", { staticClass: "card-text" }, [

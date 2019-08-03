@@ -27,7 +27,9 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-
+        return view('posts.show',[
+            'post' => $post
+        ]);
     }
 
     public function getPostsByAuthor(int $user_id, Post $posts, User $user,Request $request){
