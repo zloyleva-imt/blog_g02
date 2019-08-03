@@ -24,6 +24,12 @@ class Post extends Model
         return $q;
     }
 
+    public function scopePostByAuthor($q, $user,$request){
+        $q->with('user')->where('user_id',$user->id);
+
+        return $this->addPagination($q,$request);
+    }
+
     public function getAll(Request $request){
         $query = $this->with('user');
 

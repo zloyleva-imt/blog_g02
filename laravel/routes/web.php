@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 
 Route::resource('posts', 'PostController')->only('index', 'show');
+Route::get('author/{user_id}', 'PostController@getPostsByAuthor')->name('postByAuthor');
 
 Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function (){
     Route::resource('users', 'UserController');

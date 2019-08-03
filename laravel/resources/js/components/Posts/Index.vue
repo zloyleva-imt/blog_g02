@@ -11,8 +11,9 @@
                     <div class="col-md-8">
                         <div class="card-body">
                             <h5 class="card-title">{{ post.title }}</h5>
+                            <p class="card-text"><small class="text-muted">author <a href="">{{ post.user.name }}</a></small></p>
                             <p class="card-text">{{ post.body }}</p>
-                            <p class="card-text"><small class="text-muted">{{ post.created_at }}</small></p>
+                            <p class="card-text"><small class="text-muted">published at {{ post.created_at | moment("dddd, MMMM Do YYYY") }}</small></p>
                         </div>
                     </div>
                 </div>
@@ -30,7 +31,12 @@
             posts:{
                 type: Object,
                 required: true
+            },
+            routes:{
+                type: Object,
+                required: true
             }
+
         }
     }
 </script>
