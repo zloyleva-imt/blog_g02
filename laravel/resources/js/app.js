@@ -26,6 +26,9 @@ Vue.use(require('vue-moment'));
 Vue.component('posts_index-component', require('./components/Posts/Index').default);
 Vue.component('users_index-component', require('./components/Admin/Users/Index').default);
 
+Vue.component('admin_posts_index-component', require('./components/Admin/Posts/Index').default);
+Vue.component('admin_posts_create-component', require('./components/Admin/Posts/Create').default);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

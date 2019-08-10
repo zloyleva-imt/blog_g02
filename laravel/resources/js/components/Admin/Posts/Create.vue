@@ -1,0 +1,98 @@
+<template>
+    <div>
+        <AdminHeader
+            :routes="routes"
+        ></AdminHeader>
+
+        <b-container fluid>
+            <b-row>
+                <b-col class="my-1">
+
+                    <b-form @submit.prevent="submitFormHandler">
+
+                        <b-form-group id="input-group-2" label="Post title:" label-for="input-2">
+                            <b-form-input
+                                    id="input-2"
+                                    v-model="form.title"
+                                    required
+                                    placeholder="Enter title"
+                            ></b-form-input>
+                        </b-form-group>
+
+                        <b-form-group id="input-group-1" label="Post short description:" label-for="input-1">
+                            <b-form-textarea
+                                    id="input-2"
+                                    v-model="form.short_description"
+                                    required
+                                    placeholder="Enter short description"
+                            ></b-form-textarea>
+                        </b-form-group>
+
+                        <b-form-group id="input-group-3" label="Post body:" label-for="input-3">
+                            <b-form-textarea
+                                    id="input-2"
+                                    v-model="form.body"
+                                    required
+                                    placeholder="Enter body"
+                            ></b-form-textarea>
+                        </b-form-group>
+
+                        <b-form-group id="input-group-4" label="Status:" label-for="input-4">
+                            <b-form-select
+                                    id="input-3"
+                                    v-model="form.published_status"
+                                    :options="props_published_status"
+                                    required
+                            ></b-form-select>
+                        </b-form-group>
+
+
+                        <b-button type="submit" variant="primary">Create post</b-button>
+                    </b-form>
+
+                </b-col>
+            </b-row>
+        </b-container>
+
+    </div>
+</template>
+
+<script>
+
+    import AdminHeader from '../Header/Index';
+
+    export default {
+        name: "AdminPostsCreate",
+        components: {
+            AdminHeader
+        },props:{
+            routes:{},
+            props_published_status:{}
+        },
+        data(){
+            return {
+                form:{
+                    title:'',
+                    short_description:'',
+                    body:'',
+                }
+            }
+        },
+        methods:{
+            submitFormHandler(){
+                console.log('submitFormHandler')
+
+                axios.post(
+                    this.routes.adminPosts,
+                    this.form
+                ).then(res => {
+                    console.log(res)
+                })
+            }
+        }
+    }
+</script>
+
+<style scoped>
+
+</style>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\View\View;
 
 class PostController extends Controller
 {
@@ -13,9 +14,9 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request, Post $posts):View
     {
-
+        return view('admin.posts.index',['posts' => $posts->getAll($request)]);
     }
 
     /**
@@ -25,7 +26,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.posts.create',[
+            'published_status' => config('custom.enum.published_status')
+        ]);
     }
 
     /**
@@ -34,9 +37,9 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Post $post)
     {
-        //
+        return $post->create($request->only(['title','short_description','body','published_status']));
     }
 
     /**
