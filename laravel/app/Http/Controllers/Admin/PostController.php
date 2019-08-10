@@ -27,7 +27,7 @@ class PostController extends Controller
     public function create()
     {
         return view('admin.posts.create',[
-            'published_status' => config('custom.enum.published_status')
+            'published_status' => config('custom.enum.published_status'),
         ]);
     }
 
@@ -43,17 +43,6 @@ class PostController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Post $post)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Post  $post
@@ -61,19 +50,20 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('admin.posts.edit',[
+            'post' => $post,
+            'published_status' => config('custom.enum.published_status')
+        ]);
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Post $post
+     * @return bool
      */
     public function update(Request $request, Post $post)
     {
-        //
+        return (string) $post->update($request->only(['title','short_description','body','published_status']));
     }
 
     /**

@@ -27,10 +27,8 @@
                             {{ data.value.name }}
                         </template>
 
-                        <template slot="actions" slot-scope="row">
-                            <b-button size="sm" class="mr-2">
-                                Edit
-                            </b-button>
+                        <template slot="slug" slot-scope="data">
+                            <b-link :href="`${routes.adminPosts}/${data.value}/edit`" class="btn btn-warning mr-2">Edit</b-link>
                             <b-button size="sm" class="mr-2" variant="danger">
                                 Delete
                             </b-button>
@@ -68,7 +66,8 @@
                     'title',
                     // A column that needs custom formatting
                     { key: 'user', label: 'Author' },
-                    'actions',
+                    { key: 'slug', label: 'Actions' },
+
                 ],
                 items: []
             }

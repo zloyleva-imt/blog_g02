@@ -12,7 +12,7 @@
 
                         <b-form-group id="input-group-2" label="Post title:" label-for="input-2">
                             <b-form-input
-                                    id="input-21"
+                                    id="input-2"
                                     v-model="form.title"
                                     required
                                     placeholder="Enter title"
@@ -21,7 +21,7 @@
 
                         <b-form-group id="input-group-1" label="Post short description:" label-for="input-1">
                             <b-form-textarea
-                                    id="input-22"
+                                    id="input-2"
                                     v-model="form.short_description"
                                     required
                                     placeholder="Enter short description"
@@ -30,7 +30,7 @@
 
                         <b-form-group id="input-group-3" label="Post body:" label-for="input-3">
                             <b-form-textarea
-                                    id="input-3"
+                                    id="input-2"
                                     v-model="form.body"
                                     required
                                     placeholder="Enter body"
@@ -39,7 +39,7 @@
 
                         <b-form-group id="input-group-4" label="Status:" label-for="input-4">
                             <b-form-select
-                                    id="input-4"
+                                    id="input-3"
                                     v-model="form.published_status"
                                     :options="props_published_status"
                                     required
@@ -47,7 +47,7 @@
                         </b-form-group>
 
 
-                        <b-button type="submit" variant="primary">Create post</b-button>
+                        <b-button type="submit" variant="primary">Edit post</b-button>
                     </b-form>
 
                 </b-col>
@@ -59,16 +59,16 @@
 
 <script>
 
-    import 'tinymce';
     import AdminHeader from '../Header/Index';
 
     export default {
-        name: "AdminPostsCreate",
+        name: "AdminPostsEdit",
         components: {
             AdminHeader
         },props:{
             routes:{},
-            props_published_status:{}
+            props_published_status:{},
+            post:{}
         },
         data(){
             return {
@@ -79,10 +79,13 @@
                 }
             }
         },
+        created(){
+            this.form = {...this.post};
+        },
         methods:{
             submitFormHandler(){
-                axios.post(
-                    this.routes.adminPosts,
+                axios.put(
+                    `${this.routes.adminPosts}/${this.post.slug}`,
                     this.form
                 ).then(res => {
                     location.href = this.routes.adminPosts;
@@ -90,9 +93,6 @@
 
                 })
             }
-        },
-        created(){
-
         }
     }
 </script>

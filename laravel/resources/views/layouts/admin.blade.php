@@ -8,6 +8,7 @@
     <title>Document</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
 </head>
 <body>
 
@@ -16,5 +17,12 @@
     </div>
 
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/tinymce.js') }}"></script>
+    <script>
+        tinymce.init({
+            selector: '#input-3',  // change this value according to your HTML
+            width: 'auto'
+        });
+    </script>
 </body>
 </html>

@@ -11,6 +11,10 @@ class PostObserver
     public function creating(Post $post){
         $post->slug = Str::slug($post->title);
     }
+
+    public function updating(Post $post){
+        $post->slug = Str::slug($post->title);
+    }
 //    /**
 //     * Handle the post "created" event.
 //     *

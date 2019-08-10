@@ -28,6 +28,7 @@ Vue.component('users_index-component', require('./components/Admin/Users/Index')
 
 Vue.component('admin_posts_index-component', require('./components/Admin/Posts/Index').default);
 Vue.component('admin_posts_create-component', require('./components/Admin/Posts/Create').default);
+Vue.component('admin_posts_edit-component', require('./components/Admin/Posts/Edit').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
