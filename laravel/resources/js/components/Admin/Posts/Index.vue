@@ -29,7 +29,7 @@
 
                         <template slot="slug" slot-scope="data">
                             <b-link :href="`${routes.adminPosts}/${data.value}/edit`" class="btn btn-warning mr-2">Edit</b-link>
-                            <b-button size="sm" class="mr-2" variant="danger">
+                            <b-button size="sm" class="mr-2" variant="danger" @click="deletePostHandler(data.value)">
                                 Delete
                             </b-button>
                         </template>
@@ -74,6 +74,16 @@
         },
         created(){
             this.items = this.posts.data
+        },
+        methods:{
+            deletePostHandler(slug){
+                // console.log('deletePostHandler', this.adminPosts)
+                axios.delete(`${this.routes.adminPosts}/${slug}`)
+                    .then(res => {
+                        // console.log(JSON.parse(res.data.data))
+                        this.items = JSON.parse(res.data.data).data
+                    })
+            }
         }
     }
 </script>

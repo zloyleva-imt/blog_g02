@@ -13,13 +13,15 @@
 
 Route::get('/', function () {
     return view('welcome');
-})->name('welcome');
+})->name('home');
 
 
 Route::resource('posts', 'PostController')->only('index', 'show');
 Route::get('author/{user_id}', 'PostController@getPostsByAuthor')->name('postByAuthor');
 
-Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function (){
+Route::prefix('admin')->name('admin.')->middleware('roles:admin', 'auth')->namespace('Admin')->group(function (){
     Route::resource('users', 'UserController');
     Route::resource('posts', 'PostController')->except('show');
 });
+
+Auth::routes();

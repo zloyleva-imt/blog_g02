@@ -17,12 +17,5 @@
     </div>
 
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/tinymce.js') }}"></script>
-    <script>
-        tinymce.init({
-            selector: '#input-3',  // change this value according to your HTML
-            width: 'auto'
-        });
-    </script>
 </body>
 </html>

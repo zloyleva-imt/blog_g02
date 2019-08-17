@@ -9,6 +9,7 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 
+
 import BootstrapVue from 'bootstrap-vue'
 Vue.use(BootstrapVue);
 Vue.use(require('vue-moment'));
@@ -35,6 +36,8 @@ Vue.component('admin_posts_edit-component', require('./components/Admin/Posts/Ed
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+
+
 
 const app = new Vue({
     el: '#app',

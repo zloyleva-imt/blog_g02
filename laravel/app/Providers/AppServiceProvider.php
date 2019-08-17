@@ -33,7 +33,7 @@ class AppServiceProvider extends ServiceProvider
                     'posts' => route('posts.index'),
                     'adminPosts' => route('admin.posts.index'),
                     'adminPostsCreate' => route('admin.posts.create'),
-                    'postByAuthor' => route('welcome').'/author/'
+                    'postByAuthor' => route('home').'/author/'
                 ]
             ]);
         });

@@ -10,42 +10,43 @@
 
                     <b-form @submit.prevent="submitFormHandler">
 
-                        <b-form-group id="input-group-2" label="Post title:" label-for="input-2">
+                        <b-form-group id="input-group-1" label="Post title:" label-for="title">
                             <b-form-input
-                                    id="input-21"
+                                    id="title"
                                     v-model="form.title"
                                     required
                                     placeholder="Enter title"
                             ></b-form-input>
                         </b-form-group>
 
-                        <b-form-group id="input-group-1" label="Post short description:" label-for="input-1">
+                        <b-form-group id="input-group-2" label="Post short description:" label-for="description">
                             <b-form-textarea
-                                    id="input-22"
+                                    id="description"
                                     v-model="form.short_description"
                                     required
                                     placeholder="Enter short description"
                             ></b-form-textarea>
                         </b-form-group>
 
-                        <b-form-group id="input-group-3" label="Post body:" label-for="input-3">
+                        <b-form-group id="input-group-3" label="Post body:" label-for="body">
                             <b-form-textarea
-                                    id="input-3"
+                                    id="body"
                                     v-model="form.body"
                                     required
                                     placeholder="Enter body"
                             ></b-form-textarea>
                         </b-form-group>
 
-                        <b-form-group id="input-group-4" label="Status:" label-for="input-4">
+                        <b-form-group id="input-group-4" label="Status:" label-for="published_status">
                             <b-form-select
-                                    id="input-4"
+                                    id="published_status"
                                     v-model="form.published_status"
                                     :options="props_published_status"
                                     required
                             ></b-form-select>
                         </b-form-group>
 
+                        <!--<tinymce-editor api-key="rrwtslc5f4mzvlcxfcmwqkkplxua1w58jw9gpdx3399jbrqc" :init="{plugins: 'wordcount'}"></tinymce-editor>-->
 
                         <b-button type="submit" variant="primary">Create post</b-button>
                     </b-form>
@@ -59,13 +60,16 @@
 
 <script>
 
-    import 'tinymce';
+    // var Editor = require('@tinymce/tinymce-vue').default;
+    // import Editor from '@tinymce/tinymce-vue';
+
     import AdminHeader from '../Header/Index';
 
     export default {
         name: "AdminPostsCreate",
         components: {
-            AdminHeader
+            AdminHeader,
+            // 'tinymce-editor': Editor
         },props:{
             routes:{},
             props_published_status:{}

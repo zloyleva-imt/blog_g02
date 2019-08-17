@@ -72,8 +72,11 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy(Request $request, Post $post)
     {
-        //
+        $post->delete();
+        return response()->json([
+            'data' => $post->getAll($request)
+        ]);
     }
 }
